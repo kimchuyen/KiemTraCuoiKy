@@ -26,14 +26,14 @@ public class Task5 {
     }
     public static void main(String[] args) {
         Task5 t5 = new Task5();
-        Set<Integer> s = t5.createSet();
+        Set<Integer> so = t5.createSet();
         System.out.println("Chuỗi ban đầu:");
-        for (int e : s) {
+        for (int e : so) {
             System.out.print(e+"  ");
         }
-        t5.removeAllNumbersGreaterThan10(s);
+        t5.removeAllNumbersGreaterThan10(so);
         System.out.println("chuoi sau khi remove:");
-        for (int e : s) {
+        for (int e : so) {
             System.out.print(e+"  ");
         }
     }

@@ -45,7 +45,7 @@ import java.util.Scanner;
             Task3 t3= new Task3();
             t3.readString();
             String chuoi = t3.upperCaseString(t3.chuoi);
-            System.out.println("After changing: " +chuoi);
+            System.out.println("Chuỗi in hoa chữ đầu: " +chuoi);
 
         }
 

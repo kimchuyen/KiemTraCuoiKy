@@ -18,10 +18,12 @@ import java.util.Scanner;
 public class Task4 {
     public List<Integer> getIntegerList() {
         Scanner sc = new Scanner(System.in);
+        System.out.println("nhap vào N:");
         int n;
         n = sc.nextInt();
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < n; i++) {
+            System.out.println(" nhap vào phan tu:"+i);
             list.add(sc.nextInt());
         }
         return list;
@@ -37,6 +39,7 @@ public class Task4 {
     public static void main(String[] args) {
         Task4 t4 = new Task4();
         List<Integer> list = t4.getIntegerList();
-        System.out.println(t4.getMinimum(list));
+        System.out.println("chuoi là: "+list);
+        System.out.println("so be nhat của chuỗi la: "+ t4.getMinimum(list));
     }
 }
