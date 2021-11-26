@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="1">Đoạn văn 1: Lý thuyết Automation Test là gì? hiểu đúng công việc của Automation testers.Học gì và học như thế nào để có thể làm Automation Test</p>
+  <p id="2">Đoạn văn 2: Lý thuyết Automation Test là gì? hiểu đúng công việc của Automation testers.Học gì và học như thế nào để có thể làm Automation Test</p>
+  <p id="3">Đoạn văn 3:Lý thuyết Automation Test là gì? hiểu đúng công việc của Automation testers.Học gì và học như thế nào để có thể làm Automation Test</p>
+  <div>===========================================</div>
+  <p>Thay đổi màu</p>
+  <button onclick="changeColor()">changeColor</button>
+  <div>===========================================</div>
+  <p>Điền mã nàu và thay đổi màu</p>
+  <input id='bg_color' placeholder="color"/>
+  <button onclick="changeBgColor(document.getElementById('bg_color').value)">changeBgColor</button>
+  <div>===========================================</div>
+  <p>Điền id tương ứng là 1,2,3</p>
+  <input id='content_1' placeholder="from id"/>
+  <input id='content_2' placeholder="to id"/>
+  <button onclick="copyContent(document.getElementById('content_1').value, document.getElementById('content_2').value)">copyContent</button>
+  <div>===========================================</div>
+  <p>Thay đổi size</p>
+  <input id='fontSize_1' placeholder="size"/>
+  <button onclick="changeFontSize(document.getElementById('fontSize_1').value)">changeFontSize</button>
+  <div>===========================================</div>
+  <input id='inc_fs' placeholder="id"/>
+  <button onclick="increaseFontSize(document.getElementById('inc_fs').value)">increaseFontSize</button>
+  <div>===========================================</div>
+  <input id='dec_fs' placeholder="id"/>
+  <button onclick="decreaseFontSize(document.getElementById('dec_fs').value)">decreaseFontSize</button>
+
+  <script>
+    var INCREASE_LIMIT = 30
+    var DECREASE_LIMIT = 10
+
+    var body = document.getElementsByTagName("body")[0];
+    var paragraph1 = document.getElementById("paragraph-1");
+    var paragraph2 = document.getElementById("paragraph-2");
+    var paragraph3 = document.getElementById("paragraph-3");
+    var originFontSize = parseInt(window.getComputedStyle(paragraph1, null).getPropertyValue('font-size'))
+    var currentFontSize = {
+      "paragraph-1": originFontSize,
+      "paragraph-2": originFontSize,
+      "paragraph-3": originFontSize,
+    }
+
+    function changeColor() {
+      paragraph1.style.color = 'green';
+      paragraph2.style.color = 'yellow';
+      paragraph3.style.color = 'red';
+    }
+
+    function changeBgColor(color) {
+      body.style.backgroundColor = color;
+    }
+
+    function copyContent(para1, para2) {
+      var originPara = document.getElementById(para1)
+      var targetPara = document.getElementById(para2)
+      if (originPara && targetPara) {
+        originPara.innerText = targetPara.innerText
+      }
+    }
+
+    function changeFontSize(x) {
+      var fSize = parseInt(x)
+      paragraph1.style.fontSize = fSize + 'px';
+      paragraph2.style.fontSize = fSize + 'px';
+      paragraph3.style.fontSize = fSize + 'px';
+      originFontSize = fSize
+      currentFontSize = {
+        "paragraph-1": fSize,
+        "paragraph-2": fSize,
+        "paragraph-3": fSize,
+      }
+    }
+
+    function increaseFontSize(paragraph) {
+      var para = document.getElementById(paragraph)
+      if (para) {
+        if (currentFontSize[paragraph] + 1 <= originFontSize + INCREASE_LIMIT) {
+          currentFontSize[paragraph] = currentFontSize[paragraph] + 1
+          para.style.fontSize = currentFontSize[paragraph] + 'px'
+        }
+      }
+    }
+
+    function decreaseFontSize(paragraph) {
+      var para = document.getElementById(paragraph)
+      if (para) {
+        if (currentFontSize[paragraph] - 1 >= originFontSize - DECREASE_LIMIT) {
+          currentFontSize[paragraph] = currentFontSize[paragraph] - 1
+          para.style.fontSize = currentFontSize[paragraph] + 'px'
+        }
+      }
+    }
+
+  </script>
+</body>
+</html>
