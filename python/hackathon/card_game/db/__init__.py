@@ -16,11 +16,8 @@ config = {
 def log(game):
     '''
     Ghi thông tin về game vào CSDL và 2 bảng games và logs
-
     Bảng games gồm tên người chiến thắng
-
     Bảng logs gồm danh sách người chơi, bộ bài, điểm và lá bài lớn nhất tương ứng với game
-
     Chú ý, sau khi INSERT vào games, có thể lấy id của game vừa tạo với cursor.lastrowid
     '''
 
@@ -88,7 +85,6 @@ def get_last_game():
 def history():
     '''
     Lấy thông tin về lịch sử chơi
-
     Bao gồm tổng số game đã chơi, số game chiến thắng ứng với mỗi người chơi (sử dụng GROUP BY và các hàm tổng hợp)
     '''
     sql  = 'select winner,count(winner) as count from game_log.games group by winner order by count desc'
